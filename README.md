@@ -34,7 +34,7 @@ cd academiadrive
 * Example structure:
 
   ```
-  public/
+  public/academiadrive/
   ├── Math101/
   │   └── Math_Notes.pdf
   ├── CS201/
