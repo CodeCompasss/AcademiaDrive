@@ -1,11 +1,12 @@
 {
   "name": "kustudy-explorer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "release": "standard-version"
   },
   "dependencies": {
     "next": "15.3.3",
@@ -24,6 +25,7 @@
     "autoprefixer": "^10.4.21",
     "jest": "^29.7.0",
     "postcss": "^8.5.6",
+    "standard-version": "^9.5.0",
     "tailwindcss": "^4.1.11",
     "ts-jest": "^29.4.0",
     "typescript": "^5"
