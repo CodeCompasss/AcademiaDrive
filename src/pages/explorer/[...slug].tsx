@@ -145,8 +145,12 @@ export default function ExplorerPage({
                 );
               })}
             </div>
+
           </>
         )}
+
+         
+
 
         {/* Empty state */}
         {directories.length === 0 && pdfs.length === 0 && (
