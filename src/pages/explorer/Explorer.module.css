@@ -20,6 +20,9 @@
   margin-bottom: 2rem;
   text-align: center;
   position: relative;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
 }
 
 .subheading::after {
@@ -70,7 +73,18 @@
 
 .footer {
   margin-top: 3rem;
-  font-size: 0.9rem;
-  color: #888;
+  font-size: 0.95rem;
+  color: #6b7280;
   text-align: center;
 }
+
+.cardText {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.cardText::before {
+  content: attr(data-text);
+  white-space: normal;
+}
+
