@@ -1,4 +1,3 @@
-import { Folder, FileText, ChevronRight, Home } from "lucide-react";
 import fs from "fs";
 import path from "path";
 import Link from "next/link";
