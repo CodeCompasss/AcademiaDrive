@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "compress": "python3 scripts/compress.py"
   },
   "dependencies": {
     "lucide-react": "^0.525.0",
