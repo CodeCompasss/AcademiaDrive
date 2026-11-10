@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import Link from "next/link";
 import { Metadata } from "next";
-import styles from "./Explorer.module.css"; // Assuming you have a CSS module for styles
+import styles from "./Explorer.module.css";
 
 export const metadata: Metadata = {
   title: "AcademiaDrive Explorer",
@@ -12,8 +12,8 @@ type ExplorerPageProps = {
   params: {
     slug: string[];
   };
-  directories: { name: string; path: string }[];
-  pdfs: { name: string; path: string }[];
+  directories: { name: string }[];
+  files: { name: string; ext: string }[];
 };
 
 export async function getStaticPaths() {
@@ -29,7 +29,7 @@ export async function getStaticPaths() {
         directories.push(
           fullPath.replace(basePath, "").replace(/\\/g, "/").slice(1)
         );
-        directories = directories.concat(getDirectories(fullPath)); // Recursively add directories
+        directories = directories.concat(getDirectories(fullPath));
       }
     });
 
@@ -56,28 +56,38 @@ export async function getStaticProps({
   try {
     entries = fs.readdirSync(basePath, { withFileTypes: true });
   } catch {
-    return { notFound: true }; // Return 404 if path doesn't exist
+    return { notFound: true };
   }
 
   const directories = entries
     .filter((e) => e.isDirectory())
-    .map((dir) => ({ name: dir.name, path: path.join(basePath, dir.name) }));
+    .map((dir) => ({ name: dir.name }))
+    .sort((a, b) => a.name.localeCompare(b.name));
 
-  const pdfs = entries
-    .filter((e) => e.isFile() && e.name.toLowerCase().endsWith(".pdf"))
-    .map((pdf) => ({ name: pdf.name, path: path.join(basePath, pdf.name) }));
+  const files = entries
+    .filter((e) => e.isFile())
+    .map((file) => ({
+      name: file.name,
+      ext: path.extname(file.name).toLowerCase().replace(/^\./, ""),
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   return {
-    props: { params, directories, pdfs },
+    props: { params, directories, files },
   };
 }
 
 export default function ExplorerPage({
   params,
   directories,
-  pdfs,
+  files,
 }: ExplorerPageProps) {
   const { slug = [] } = params;
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const fileUrl = (name: string) =>
+    `${basePath}/academiadrive/${[...slug, name]
+      .map((s) => encodeURIComponent(s))
+      .join("/")}`;
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-gray-50 p-8">
@@ -92,8 +102,6 @@ export default function ExplorerPage({
           {slug.length > 0 ? slug.join(" / ") : "SELECT A CATEGORY"}
         </div>
 
-        {/* Folders / Directories */}
-        {/* Directories */}
         {directories.length > 0 && (
           <div className="flex flex-wrap gap-4 justify-center mb-6">
             {directories.map((dir) => (
@@ -104,11 +112,10 @@ export default function ExplorerPage({
                 aria-label={`Open ${dir.name}`}
               >
                 <div
-                  role="button"
                   title={dir.name}
                   className="w-58 h-20 flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 text-center text-sm md:text-base font-medium text-gray-900 shadow-sm hover:shadow-md hover:bg-blue-600 hover:text-white transition-colors duration-200"
                 >
-                  <span className=" cardText ">
+                  <span className="cardText">
                     {dir.name.replace(/_/g, "_\u200B")}
                   </span>
                 </div>
@@ -117,44 +124,49 @@ export default function ExplorerPage({
           </div>
         )}
 
-        {/* PDFs */}
-        {pdfs.length > 0 && (
+        {files.length > 0 && (
           <>
             <h2 className="text-center text-xl font-semibold mt-4 mb-4 text-gray-800">
-              PDFs Available
+              Files Available
             </h2>
             <div className="flex flex-wrap gap-4 justify-center">
-              {pdfs.map((pdf) => {
-                const label = pdf.name.replace(/\.pdf$/i, "");
+              {files.map((file) => {
+                const url = fileUrl(file.name);
                 return (
-                  <a
-                    key={pdf.name}
-                    href={`/academiadrive/${[...slug, pdf.name].join("/")}`}
-                    className="block"
-                    download
-                    aria-label={`Download ${label}`}
-                    title={label}
+                  <div
+                    key={file.name}
+                    className="w-60 rounded-lg border border-gray-300 bg-white px-3 py-3 text-center shadow-sm"
                   >
-                    <div className="w-48 h-20 flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 text-center text-sm md:text-base font-medium text-gray-900 shadow-sm hover:shadow-md hover:bg-green-600 hover:text-white transition-colors duration-200">
-                      <span className="break-words whitespace-normal leading-tight">
-                        {label.replace(/_/g, "_\u200B")}
-                      </span>
+                    <div className="text-sm md:text-base font-medium text-gray-900 break-words">
+                      {file.name.replace(/_/g, "_\u200B")}
                     </div>
-                  </a>
+                    <div className="mt-2 flex justify-center gap-2">
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs px-2 py-1 rounded bg-blue-600 text-white hover:bg-blue-700"
+                      >
+                        View
+                      </a>
+                      <a
+                        href={url}
+                        download
+                        className="text-xs px-2 py-1 rounded bg-green-600 text-white hover:bg-green-700"
+                      >
+                        Download
+                      </a>
+                    </div>
+                  </div>
                 );
               })}
             </div>
-
           </>
         )}
 
-         
-
-
-        {/* Empty state */}
-        {directories.length === 0 && pdfs.length === 0 && (
+        {directories.length === 0 && files.length === 0 && (
           <p className={`${styles.footer} text-center text-gray-500 mt-8`}>
-            No folders or PDFs found in this section.
+            No folders or files found in this section.
           </p>
         )}
       </div>

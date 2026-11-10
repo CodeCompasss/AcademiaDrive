@@ -1,159 +1,244 @@
+# 🎓 KTU M.Tech Computer Science & Engineering – Academic Resource Hub
 
-# **AcademiaDrive - University Notes Sharing Platform**
+A comprehensive academic resource hub for **KTU M.Tech Computer Science & Engineering students**, featuring syllabus, notes, study materials, previous question papers, lab resources, projects, and learning references.
 
-Welcome to **AcademiaDrive**, a platform designed to solve the problem of accessing and sharing study materials within your university or college. If your university doesn't provide easy access to study materials, or if you just want to make your own notes available to others, **AcademiaDrive** is the solution.
+This repository aims to make academic resources easily accessible to KTU M.Tech CSE students through a centralized, organized, and community-driven platform.
 
-The platform takes your existing Google Drive-based file-sharing system and upgrades it to a **GitHub Pages**-hosted website, making it more user-friendly and easily accessible for everyone in your college or university.
+Instead of searching across multiple websites, Google Drive links, and scattered resources, students can find everything they need in one place.
 
-### **How It Works:**
+🌐 **Live Website:** [Visit KTU M.Tech CSE Resource Hub](https://shadil-rayyan.github.io/ktu-mtech-cse/)
 
-**AcademiaDrive** allows you to create, upload, and share your notes in a simple, clean way. All you need to do is create a folder structure inside the **public** folder, upload your notes, and the website automatically reflects the changes.
-
-<img src="./public/acadmicdrive.gif" width="1000" />
 ---
 
-## **How to Use and Contribute:**
+## 📚 What You'll Find
 
-### 1. **Fork the Repository:**
+The platform provides a collection of academic resources to support students throughout their M.Tech journey.
 
-* Visit the [AcademiaDrive GitHub Repository](https://github.com/yourusername/academiadrive).
-* Click the **Fork** button on the top-right to create a copy of this repository under your GitHub account.
+- 📖 **Syllabus:** KTU M.Tech CSE curriculum, course structure, and academic regulations.
+- 📝 **Study Notes:** Subject-wise notes, lecture materials, and reference documents.
+- 📄 **Question Papers:** Previous year question papers and model examinations.
+- 💻 **Lab Resources:** Lab manuals, experiments, programs, and practical materials.
+- 🚀 **Projects:** Mini projects, major projects, research ideas, and implementation references.
+- 📚 **Learning Resources:** Useful books, tutorials, research papers, and external references.
+- 📂 **Study Materials:** PDFs, presentations, videos, and other academic resources.
 
-### 2. **Clone the Repository:**
+---
 
-After forking, clone the repository to your local machine:
+## 🚀 How It Works
+
+This project uses a simple folder-based structure to organize and share academic resources.
+
+All academic materials are maintained inside the `public/` directory. Contributors can add new files and organize them according to semesters, subjects, and resource categories.
+
+The website automatically reflects the available resources based on the repository's folder structure.
+
+No complicated database or backend setup is required.
+
+---
+
+## 🛠️ How to Use and Contribute
+
+Contributions from KTU M.Tech CSE students are welcome!
+
+### 1. Fork the Repository
+
+Visit this GitHub repository and click the **Fork** button to create your own copy.
+
+### 2. Clone Your Fork
+
+Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/academiadrive.git
-cd academiadrive
+git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+cd YOUR_REPOSITORY
 ```
 
-### 3. **Upload Your Notes:**
+### 3. Add Academic Resources
 
-* Inside the **public** folder, create folders to organize your notes however you like. It can be by course, subject, or even by specific topics.
-* You can add any kind of study material, such as PDF files, notes, slides, videos, and more.
-* Example structure:
+Navigate to the `public/` directory and add your study materials.
 
-  ```
-  public/academiadrive/
-  ├── Math101/
-  │   └── Math_Notes.pdf
-  ├── CS201/
-  │   └── CS_Slides.pdf
-  ├── Physics/
-  │   └── Physics_Notes.pdf
-  ├── Videos/
-  │   └── Lecture1.mp4
-  ```
+You can organize resources semester-wise, subject-wise, or by category.
 
-### 4. **Commit Your Changes:**
+### Example Folder Structure
 
-Once you've added your notes, commit and push your changes:
+```text
+public/
+└── academiadrive/
+    └── KTU-MTech-CSE/
+        ├── Syllabus/
+        │   ├── Regulations/
+        │   └── Course-Structure/
+        │
+        ├── Semester-1/
+        │   ├── Subject-1/
+        │   │   ├── Notes/
+        │   │   ├── Question-Papers/
+        │   │   └── References/
+        │   └── Subject-2/
+        │
+        ├── Semester-2/
+        │   ├── Subject-1/
+        │   └── Subject-2/
+        │
+        ├── Semester-3/
+        │   ├── Electives/
+        │   ├── Research/
+        │   └── Projects/
+        │
+        ├── Semester-4/
+        │   ├── Dissertation/
+        │   └── Project-Resources/
+        │
+        ├── Lab-Resources/
+        │   ├── Lab-Manuals/
+        │   └── Programs/
+        │
+        ├── Projects/
+        │   ├── Mini-Projects/
+        │   └── Major-Projects/
+        │
+        └── Learning-Resources/
+            ├── Books/
+            ├── Research-Papers/
+            └── Tutorials/
+```
+
+*The above structure is a suggested organization. It can be adapted to the applicable KTU curriculum and regulations.*
+
+### 4. Commit and Push Your Changes
+
+After adding resources:
 
 ```bash
 git add .
-git commit -m "Added Math101 and CS201 notes"
+git commit -m "Added MTech CSE study materials"
 git push origin main
 ```
 
-### 5. **Create a Pull Request (PR):**
+### 5. Create a Pull Request
 
-* After pushing your changes, go to the **Pull Requests** tab and create a **New Pull Request** to merge your changes into the main repository. This will make your notes available to everyone in your university or college.
+1. Visit your forked GitHub repository.
+2. Navigate to the **Pull Requests** tab.
+3. Click **New Pull Request**.
+4. Select the original repository as the base repository.
+5. Submit your pull request for review.
 
-### 6. **Accessing Notes:**
-
-* After your changes are merged, the newly added notes will be accessible through the website hosted on GitHub Pages.
-* Students can browse the folders by course, subject, or topic and download the materials they need.
+Once approved and merged, your contributions will become available to other students through the website.
 
 ---
 
+## 📂 Resource Organization Guidelines
 
-## **Folder Structure Explanation:**
+To keep the repository organized and easy to navigate, follow these suggestions.
 
-You have full flexibility to organize your notes however you like! Here are a few examples of how to structure your folders within `public/academiadrive/`:
+| Category | Recommended Content |
+|---|---|
+| Syllabus | Official syllabus, regulations, course structure |
+| Notes | Subject-wise notes and lecture materials |
+| Question Papers | Previous university examination papers |
+| Lab Resources | Lab manuals, experiments, source code |
+| Projects | Project reports, implementation references |
+| Research | Research papers, journals, technical articles |
+| Learning Resources | Books, tutorials, documentation |
 
-### 1. **By Course:**
+### File Naming Conventions
 
-Organize your notes by course name or code:
+Use descriptive filenames so students can easily identify resources.
 
-```plaintext
-public/academiadrive/
-├── CS101/
-├── MATH201/
-├── BIO102/
-```
+Examples:
 
-### 2. **By Subject:**
-
-Organize your notes by subject area, such as Math, Computer Science, or Physics:
-
-```plaintext
-public/academiadrive/
-├── Math/
-├── ComputerScience/
-├── Physics/
-```
-
-### 3. **By Topic:**
-
-Organize your notes by specific topics or modules within the course:
-
-```plaintext
-public/academiadrive/
-├── LinearAlgebra/
-├── DataStructures/
-├── MachineLearning/
+```text
+Computer_Networks_Unit_1_Notes.pdf
+Advanced_DBMS_Question_Paper_2025.pdf
+Machine_Learning_Lab_Manual.pdf
+Research_Methodology_Reference.pdf
 ```
 
 ---
 
+## 🎯 Project Objectives
 
-
-## **Technologies Used:**
-
-* **GitHub**: To host the repository and manage contributions.
-* **GitHub Pages**: To host the website and provide easy access to notes.
-* **HTML/CSS**: Basic styling and structure for the web interface.
-* **JavaScript (Optional)**: If you choose to add interactive features, you can use JavaScript.
-
----
-
-## **How to Access Notes:**
-
-1. Go to the **AcademiaDrive** website hosted on GitHub Pages.
-2. Browse through the folders organized by course, subject, or topic.
-3. Click to view or download the study materials (PDFs, slides, videos, etc.) that you need.
+- Create a centralized academic resource repository for KTU M.Tech CSE students.
+- Make syllabus, notes, and examination materials easily accessible.
+- Encourage students to share useful academic resources.
+- Reduce the difficulty of finding reliable study materials.
+- Build a collaborative learning environment.
+- Support academic learning, practical skills, and research activities.
 
 ---
 
-## **Contributing Guidelines:**
+## 🧰 Technologies Used
 
-1. **Be Respectful**: This is a community-driven platform. Please contribute in a way that helps others and maintains a collaborative environment.
-2. **Stay Organized**: Keep your folder structure clean and easy to navigate so others can quickly find the materials they need.
-3. **Naming Conventions**: Please follow a simple naming convention for your notes so that they are easily identifiable.
-
----
-
-## **Need Help?**
-
-If you run into any issues or have questions, feel free to open an issue on the GitHub repository or reach out to the project maintainers.
+- **Next.js (static export):** Builds the browsable site deployed to GitHub Pages.
+- **GitHub:** Version control and collaborative contributions.
+- **GitHub Pages:** Static website hosting.
+- **TypeScript & React:** UI, routing, and file browsing.
+- **HTML & CSS:** Website structure and styling.
+- **Git:** Managing and tracking contributions.
 
 ---
 
-### **Join the Community:**
+## 🗜️ Compression
 
-By contributing your notes to **AcademiaDrive**, you're helping make academic resources more accessible to everyone in your university or college. Let’s work together to ensure that every student has access to the materials they need to succeed.
+Run `npm run compress` to losslessly compress PDFs and PNGs under `public/academiadrive/` before committing. The script keeps page counts and text intact for PDFs.
 
----
+## 👀 Viewing Files
 
-### **License:**
-
-This project is licensed under the [License](LICENSE).
+The site lists every file type. Use **View** to open a file in the browser or **Download** to save it.
 
 ---
 
-### **Conclusion:**
+## 🤝 Contributing Guidelines
 
-The goal of **AcademiaDrive** is to make it easy for students within your university or college to access and share study materials. Instead of relying on external services like Google Drive, **AcademiaDrive** takes it a step further by providing a **dedicated website** that anyone in your university can access and contribute to.
+This is a community-driven initiative. Every useful contribution helps fellow students.
 
-This solution is scalable and can be easily adapted to other universities or colleges facing similar challenges.
+Please follow these guidelines:
+
+1. **Be Relevant:** Upload resources related to KTU M.Tech Computer Science & Engineering.
+2. **Stay Organized:** Follow the suggested folder structure.
+3. **Use Clear Names:** Give files descriptive names.
+4. **Avoid Duplicates:** Check whether a resource already exists before uploading.
+5. **Maintain Quality:** Prefer readable, accurate, and useful academic materials.
+6. **Respect Copyright:** Upload only materials you have permission to share. Provide references and attribution wherever necessary.
+7. **Be Respectful:** Maintain a collaborative and supportive learning environment.
+
+---
+
+## 💡 Have Something to Contribute?
+
+Have useful notes, previous question papers, lab programs, project resources, or learning materials?
+
+Don't keep them to yourself!
+
+Share them with the community by submitting a pull request. Even a single useful resource can help another student.
+
+---
+
+## 📢 Join the Community
+
+This project is more than just a collection of PDFs and documents. It is an attempt to build a collaborative academic ecosystem for **KTU M.Tech Computer Science & Engineering students**.
+
+Whether you are preparing for examinations, working on laboratory assignments, exploring research topics, or developing projects, this repository aims to provide resources that make your academic journey easier.
+
+**Learn together. Share knowledge. Grow together.**
+
+---
+
+## 📜 License
+
+This project is distributed under the license specified in the [`LICENSE`](LICENSE) file.
+
+Please ensure that all contributed materials comply with their respective licenses and copyright requirements.
+
+---
+
+## ⭐ Support the Project
+
+If you find this repository useful:
+
+- ⭐ Star the repository.
+- 🍴 Fork it and contribute.
+- 📢 Share it with fellow KTU M.Tech CSE students.
+- 🤝 Help expand the academic resource collection.
+
+**Let's make quality academic resources accessible to every KTU M.Tech CSE student!**

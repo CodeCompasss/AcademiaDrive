@@ -1,42 +1,36 @@
-
-
-import fs from 'fs';
-import path from 'path';
-import ExplorerPage from './explorer/[...slug]';
-import { GetStaticProps } from 'next';
+import fs from "fs";
+import path from "path";
+import ExplorerPage from "./explorer/[...slug]";
+import { GetStaticProps } from "next";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const basePath = path.join(process.cwd(), 'public/academiadrive');
-  
-  // List the top-level directories
-  const directories = fs.readdirSync(basePath, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((dir) => dir.name);
+  const basePath = path.join(process.cwd(), "public/academiadrive");
 
-  // No PDFs at the homepage level
-  
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const pdfs: any[] = [];
+  const directories = fs
+    .readdirSync(basePath, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((dir) => ({ name: dir.name }))
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   return {
     props: {
-      params: { slug: [] },  // Empty slug for the homepage
+      params: { slug: [] },
       directories,
-      pdfs,
+      files: [],
     },
   };
 };
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function HomePage({ directories, pdfs }: { directories: string[], pdfs: any[] }) {
+
+export default function HomePage({
+  directories,
+  files,
+}: {
+  directories: { name: string }[];
+  files: { name: string; ext: string }[];
+}) {
   return (
     <div>
-      <ExplorerPage
-        params={{ slug: [] }} // Empty slug for the homepage
-        directories={directories.map((dir) => ({ name: dir, path: dir }))}
-        pdfs={pdfs} // No PDFs for the homepage
-      />
+      <ExplorerPage params={{ slug: [] }} directories={directories} files={files} />
     </div>
   );
 }
-
-       
